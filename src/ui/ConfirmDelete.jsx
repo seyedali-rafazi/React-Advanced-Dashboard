@@ -16,7 +16,7 @@ function ConfirmDelete({ resurse, onClose, disabled, onConfirm }) {
         <button
           onClick={onConfirm}
           disabled={disabled}
-          className="btn btn--danger flex-1 py-3">
+          className="btn btn--danger flex-1 py-3 hover:bg-rose-700 hover:text-primary-100">
           تایید
         </button>
       </div>

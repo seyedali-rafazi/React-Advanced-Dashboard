@@ -20,6 +20,7 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOtp, otpResponse }) {
     e.preventDefault();
     try {
       const response = await mutateAsync({ phoneNumber, otp });
+      console.log(response.data.data);
       const { message, user } = response.data.data;
       toast.success(message);
       if (!user.isActive) {
