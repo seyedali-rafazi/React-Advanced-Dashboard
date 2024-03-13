@@ -26,7 +26,6 @@ function CompleteProfileForm() {
   const onSubmit = async (data) => {
     try {
       const response = await mutateAsync(data);
-      console.log(response);
       const { user, message } = response.data.data;
       toast.success(message);
       if (user.status !== 2) {
@@ -41,9 +40,6 @@ function CompleteProfileForm() {
         return navigate("/FREELANCER");
       }
     } catch (error) {
-      console.log(error);
-      console.log(data);
-
       toast.error(error?.response?.data?.message);
     }
   };

@@ -3,16 +3,19 @@ import Table from "../../ui/Table";
 import { toPersianNumbersWithComma } from "../../utils/formatNumber";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { truncateText } from "../../utils/truncateText";
-import { HiOutlineTrash } from "react-icons/hi";
+import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
+import CreateProjectForm from "./CreateProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const { removePproject, isDeleting } = useRemoveProject();
+  const { removePproject } = useRemoveProject();
   return (
     <Table.Row>
       <td>{index + 1}</td>
@@ -31,11 +34,7 @@ function ProjectRow({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        {project.status == "OPEN" ? (
-          <span className="badge badge--success">باز</span>
-        ) : (
-          <span className="badge badge--danger">بسته</span>
-        )}
+        <ToggleProjectStatus project={project} />
       </td>
       <td>
         <button onClick={() => setIsEditOpen(true)}>
@@ -45,7 +44,10 @@ function ProjectRow({ project, index }) {
           title={`ویرایش ${project.title}`}
           open={isEditOpen}
           onClose={() => setIsEditOpen(false)}>
-          this is modal
+          <CreateProjectForm
+            projectToEdit={project}
+            onClose={() => setIsEditOpen(false)}
+          />
         </Modal>
         <button onClick={() => setIsDeleteOpen(true)}>
           <HiOutlineTrash className="icon icon--error" />
@@ -65,6 +67,11 @@ function ProjectRow({ project, index }) {
             disabled={false}
           />
         </Modal>
+      </td>
+      <td>
+        <Link className="flex justify-center" to={project._id}>
+          <HiEye className="icon icon--primary " />
+        </Link>
       </td>
     </Table.Row>
   );

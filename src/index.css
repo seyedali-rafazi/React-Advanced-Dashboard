@@ -103,6 +103,9 @@
 .icon{
   @apply w-5 h-5 m-1
 }
+.icon--primary {
+  @apply text-primary-800
+}
 .icon--edit{
   @apply text-primary-900
 }
