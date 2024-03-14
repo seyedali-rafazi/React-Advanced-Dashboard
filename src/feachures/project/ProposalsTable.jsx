@@ -1,6 +1,7 @@
 import React from "react";
 import Empty from "../../ui/Empty";
 import Table from "../../ui/Table";
+import ProposalRow from "./proposalRow";
 
 function ProposalsTable({ proposals }) {
   if (!proposals.length) return <Empty resourceName="درخواستی" />;
@@ -17,8 +18,12 @@ function ProposalsTable({ proposals }) {
           <th>عملیات</th>
         </Table.Header>
         <Table.Body>
-          {projects.map((project, index) => (
-            <ProjectRow key={project._id} project={project} index={index} />
+          {proposals.map((proposal, index) => (
+            <ProposalRow
+              key={proposal._id}
+              proposal={proposal}
+              index={index}
+            />
           ))}
         </Table.Body>
       </Table>
