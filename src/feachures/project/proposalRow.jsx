@@ -32,7 +32,8 @@ function ProposalRow({ proposal, index }) {
       <td>{proposal.duration} روز</td>
       <td>{proposal.price}</td>
       <td>
-        <span className={`badge ${statusStyle[status].className}`}>
+        <span
+          className={`badge ${statusStyle[status].className} flex justify-center`}>
           {statusStyle[status].label}
         </span>
       </td>
@@ -46,7 +47,7 @@ function ProposalRow({ proposal, index }) {
             onClose={() => setOpen(false)}
           />
         </Modal>
-        <button onClick={() => setOpen(true)}>تغییر وضعیت</button>
+        <button className="hover:text-primary-600 transition-all duration-300" onClick={() => setOpen(true)}>تغییر وضعیت</button>
       </td>
       <td></td>
     </Table.Row>

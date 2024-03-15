@@ -30,6 +30,9 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOtp, otpResponse }) {
         toast("پروفایل شما در انتظار تایید است.", { icon: "👏" });
         return;
       }
+      if (user.role == "ADMIN") {
+        return navigate("/owner");
+      }
       if (user.role == "OWNER") {
         return navigate("/owner");
       }

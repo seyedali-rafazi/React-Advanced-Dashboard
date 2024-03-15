@@ -16,14 +16,11 @@ function ProposalsTable({ proposals }) {
           <th>هزینه</th>
           <th>وضعیت</th>
           <th>عملیات</th>
+          <th></th>
         </Table.Header>
         <Table.Body>
           {proposals.map((proposal, index) => (
-            <ProposalRow
-              key={proposal._id}
-              proposal={proposal}
-              index={index}
-            />
+            <ProposalRow key={proposal._id} proposal={proposal} index={index} />
           ))}
         </Table.Body>
       </Table>
