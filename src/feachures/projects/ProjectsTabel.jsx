@@ -7,6 +7,7 @@ import { HiPlus } from "react-icons/hi";
 import Modal from "../../ui/Modal";
 import CreateProjectForm from "./CreateProjectForm";
 import ProjectHeader from "./ProjectHeader";
+import Empty from "../../ui/Empty";
 function ProjectsTabel() {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) {
@@ -18,13 +19,7 @@ function ProjectsTabel() {
   }
 
   if (!projects.length) {
-    return (
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">
-          هیچ پروژه ای یافت نشد
-        </h1>
-      </div>
-    );
+    return <Empty resourceName="هیچ پروژه ای یافت نشد" />;
   }
   return (
     <div>

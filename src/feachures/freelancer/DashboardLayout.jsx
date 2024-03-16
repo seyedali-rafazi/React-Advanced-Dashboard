@@ -1,11 +1,11 @@
 import React from "react";
-import Stats from "./Stats";
-import useOwnerProjects from "../projects/useOwnerProjects";
 import Loading from "../../ui/Loading";
+import Stats from "./Stats";
+import useProposals from "../proposals/useProposals";
 import DashboardHeader from "../../ui/DashboardHeader";
 
 function DashboardLayout() {
-  const { isLoading, projects } = useOwnerProjects();
+  const { isLoading, proposals } = useProposals();
 
   if (isLoading) {
     return <Loading />;
@@ -13,7 +13,7 @@ function DashboardLayout() {
   return (
     <div>
       <DashboardHeader />
-      <Stats projects={projects} />
+      <Stats proposals={proposals} />
     </div>
   );
 }

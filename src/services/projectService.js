@@ -25,3 +25,7 @@ export function toggelProjectStatusApi({ id, data }) {
 export function getprojectApi(id) {
   return http.get(`/project/${id}`).then(({ data }) => data.data);
 }
+
+export function getProjectsApi(qs) {
+  return http.get(`/project/list${qs}`).then(({ data }) => data.data);
+}
